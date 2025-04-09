@@ -6,5 +6,4 @@ else:
 if number < 0:
     message += " và là số âm"
 print(message)
-
     
