@@ -18,8 +18,8 @@ def nhap_san_pham():
 
 def in_danh_sach(list_prdu):
     print("-----Danh sách sản phẩm-----")
-    for pro in list_prdu:
-        sort_list = sorted(list_prdu, key=lambda pro: pro['money'], reverse=True)
+    sort_list = sorted(list_prdu, key=lambda pro: pro['money'], reverse=True)
+    for pro in sort_list:
         print(f"Tên sản phẩm: {pro['name']}")
         print(f"Giá sản phẩm: {pro['price']:.2f}")
         print(f"Số lượng sản phẩm: {pro['quantity']}")
