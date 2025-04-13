@@ -9,15 +9,11 @@ def nhap_diem_tu_chon():
     if choice == "có":
         tu_chon = input("Môn tự chọn là môn:(Sinh hoặc Tin):").strip().lower()
         diem_bat_buoc = nhap_diem_bat_buoc()
-        if tu_chon == "sinh":
+        if tu_chon in ['sinh','tin']:
+            diem_tu_chon = float(input(f"Điểm {tu_chon}"))
             return {
                 **diem_bat_buoc,
-                "sinh": float(input("Điểm sinh:"))
-            }
-        elif tu_chon == "tin":
-            return {
-                **diem_bat_buoc,
-                "tin": float(input("Điểm tin:"))
+                tu_chon : diem_tu_chon
             }
         else:
             print("Nhập môn tự chọn không hợp lệ (Chỉ nhận môn Sinh hoặc môn Tin)")
@@ -33,7 +29,7 @@ def xep_loại(avg):
         return "Khá"
     elif avg > 5.0:
         return "Trung bình"
-    else: return "Yếu"
+    return "Yếu"
 def nhap_danh_sach():
     n = int(input("Nhập số sinh viên:"))
     list_sv = []
