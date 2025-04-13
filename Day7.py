@@ -28,7 +28,7 @@ def in_danh_sach(list_prdu):
 
 def tong_tien(list_prdu):
     return sum(pro['money'] for pro in list_prdu)   
-     
+
 danh_sach = nhap_san_pham()
 in_danh_sach(danh_sach)
 total = tong_tien(danh_sach)
