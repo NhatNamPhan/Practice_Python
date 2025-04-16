@@ -24,7 +24,7 @@ def in_danh_sach(list_prdu):
         print(f"Giá sản phẩm: {pro['price']:.2f}")
         print(f"Số lượng sản phẩm: {pro['quantity']}")
         print(f"Thành tiền: {pro['money']:.2f}")
-        print("----------------------------")
+        print("-"*28)
 
 def tong_tien(list_prdu):
     return sum(pro['money'] for pro in list_prdu)   

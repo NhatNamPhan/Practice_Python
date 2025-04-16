@@ -43,7 +43,7 @@ def in_danh_sach(list_stu):
         for mon in sv['subjects']:
             print(f"{mon['ten_mon']}: {mon['diem_so']}")
         print(f"Điểm trung bình: {sv['avg']:.2f}")
-        print("----------------------------")
+        print("-"*28)
 
 danh_sach = nhap_danh_sach()
 in_danh_sach(danh_sach)

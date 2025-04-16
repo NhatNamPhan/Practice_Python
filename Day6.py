@@ -79,7 +79,7 @@ def in_danh_sach(list_stu):
         print(f"Tên sinh viên: {sv['name']}")
         print(f"Điểm trung bình: {sv['avg']:.2f}")
         print(f"Xếp loại: {sv['rank']}")
-        print("----------------------------")
+        print("-"*28)
 
 def dem_rank(list_stu):
     gioi=kha=tb=yeu = 0

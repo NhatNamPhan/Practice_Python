@@ -57,7 +57,7 @@ def in_danh_sach(list_stu):
         print(f"Lớp: {sv['class']}")
         print(f"Điểm trung bình: {sv['avg']:.2f}")
         print(f"Xếp loại: {sv['rank']}")
-        print("----------------------------")
+        print("-"*28)
         
 danh_sach = nhap_danh_sach()
 in_danh_sach(danh_sach)
