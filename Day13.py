@@ -27,7 +27,7 @@ class LibraryManager():
             print("Danh sách rỗng!!!")
             return
         else:
-            matches = [bk for bk in self.books if search_title.lower() == bk.title.lower()]
+            matches = [bk for bk in self.books if search_title.lower() in bk.title.lower()]
             if matches:
                 for bk in matches:
                     print(f"Tên sách: {bk.title}")
@@ -41,24 +41,28 @@ class LibraryManager():
             print("Danh sách rỗng!!!")
             return
         else:
-            matches = [bk for bk in self.books if book.lower() == bk.title.lower()]
-            if matches:
-                for bk in matches:
-                    if bk.status == "borrowed":
-                        print("Sách đã có người mượn!!!")
-                    else:
-                        bk.status = "borrowed"
-                        print("Mượn sách thành công!!!")
-                        return
-            else: print("Không tìm thấy sách muốn mượn!!!")
-    def return_book(self):
+            matches = next((bk for bk in self.books if book.lower() == bk.title.lower()),None)
+            if not matches:
+                print("Không tìm thấy sách muốn mượn!!!")
+            elif matches.status == "borrowed":
+                print("Sách này đã có người mượn!!!")
+            else:
+                matches.status = "borrowed"
+                print("Mượn sách thành công!!!")
+                
+    def return_book(self, book):
         if not self.books:
             print("Danh sách rỗng!!!")
             return
         else:
-            for bk in self.books:
-                bk.status = "available"
-                print("Trả sách thành công")
+            matches = next((bk for bk in self.books if book.lower() == bk.title.lower()),None)
+            if not matches:
+                print("Không tìm thấy sách cần trả")
+            elif matches.status == "available":
+                print("Sách này chưa được mượn")
+            else:
+                matches.status = "available"
+                print("Trả sách thành công!!!")
                 
 def menu():
     manager = LibraryManager()
@@ -72,8 +76,8 @@ def menu():
         choose = int(input("Nhập lựa chọn chức năng:"))
         if choose == 1:
             title = input("Nhập tên sách:")
-            author = input("Nhập tên tác giả")
-            year = int(input("Nhập năm xuất bản"))
+            author = input("Nhập tên tác giả:")
+            year = int(input("Nhập năm xuất bản:"))
             status = "available"
             book = Book(title,author,year,status)
             manager.add_book(book)
@@ -86,7 +90,8 @@ def menu():
             borrow_bk = input("Nhập tên sách muốn mượn:")
             manager.borrow_book(borrow_bk)
         elif choose == 5:
-            manager.return_book()
+            return_bk = input('Nhập tên sách muốn trả:')
+            manager.return_book(return_bk)
         elif choose == 6:
             print("Tạm biệt!!!")
             break
