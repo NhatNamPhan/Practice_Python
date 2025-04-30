@@ -3,12 +3,14 @@ class Product():
         self.product_id = product_id
         self.name = name
         self.price = price
+        
 class OrderItem():
     def __init__(self, product:Product, quantity:int):
         self.product = product
         self.quantity = quantity
     def get_total_price(self) -> float:
         return self.product.price * self.quantity
+    
 class Order():
     def __init__(self,order_id:int, order_items: list[OrderItem] = None):
         self.order_id = order_id
@@ -27,6 +29,7 @@ class Order():
             print(f"Thành tiền: {item.get_total_price()}")
             print("-"*28)
         print(f"Tổng đơn hàng: {self.get_total_order()}")
+        
 def menu():
     orders = []
     order = None
