@@ -21,6 +21,7 @@ customer_summary = df.groupby('customer').agg({
 }).reset_index()
 print("\n2. Tổng số lượng và doanh thu của mỗi khách hàng:")
 print(customer_summary)
+
 # Câu 3: Tổng doanh thu theo từng ngày
 daily_revenue = df.groupby('order_date')['total'].sum().reset_index()
 print("\n3. Tổng doanh thu theo từng ngày:")
